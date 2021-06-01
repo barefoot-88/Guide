@@ -34,11 +34,11 @@ This page should inform about what information is made public when sending or re
 @TODO: address reuse / write glossary term about Gap limit  
 -->
 
-It’s a common misconception that Bitcoin payments are anonymous. Instead, they can be referred to as pseudonymous, this means that who owns a freshly generated addresses is not public knowledge. Unless your ownership is revealed, whether directly by yourself or indirectly by some third-party you are able to remain anonymous.
+It’s a common misconception that Bitcoin payments are anonymous. Instead, they should be referred to as pseudonymous. While the ownership of freshly generated bitcoin addresses is not public knowledge and difficult to decipher, sensitive information can be slowly revealed over time - either directly by yourself or by some third-party. Once the anonymity of bitcoin addresses begins to slowly degrade, the identities behind bitcoin payments become easier to decrypt.  
 
 Transactions, their signatures, and addresses added to the Bitcoin blockchain remain public forever. This means that looking up any address or transaction is trivial, as demonstrated by going back to the very first block mined on [January 3, 2009](https://blockstream.info/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b).
 
-While all transactions are public, there is no personal identification about the address owners stored on the blockchain itself.
+While all transactions are public, there is no personal identification about the address owners stored on the blockchain itself. However, this information can be collected and stored by individuals or third-parties for their own benefits - and so privacy should be preserved whenever possible.
 
 > Each Bitcoin transaction contains at least one input and at least one output. This means that once a single address is known, there is a trail to follow the bitcoin.
 >
@@ -50,7 +50,7 @@ The key to keeping your transactions private is to prevent others from determini
 
 ## Methods to preserve privacy
 
-There are many ways your identity might get connected to your addresses[^1],so keeping Bitcoin payments private takes diligent work but is not impossible. Let’s explore some practices that help preserve privacy of your users' Bitcoin payments.
+There are many ways your identity might get connected to your addresses[^1], so keeping Bitcoin payments private takes diligent work but is not impossible. Let’s explore some practices that help preserve privacy of your users' Bitcoin payments.
 
 <!-- talk about the problem as you are talking about the solution -->
 
@@ -103,7 +103,7 @@ TODO: Graphic / consider how to get the ui generating multiple addresses. make i
    caption = "Labeling of receiving addresses can help minimize privacy leaks when spending the coins in the future."
 %}
 
-If the application supports it, the user can [add additional details]({{ "/guide/payments/receive/#inputting-additional-payment-details" | relative_url }}) to a payment when receiving bitcoin. This practice is often called address labeling. Not only does this help to remember what payments were for, it also enables preventative measures for preserving privacy. Labeling receiving addresses([UTXOs]({{ "/guide/glossary/#unspent-transaction-output-utxo" | relative_url }})) with the sender's name can inform decisions for which UTXOs are selected as inputs in future transactions, this is often referred to as [coin control]({{ "/guide/glossary/#coin-control" | relative_url }}).
+If the application supports it, the user can [add additional details]({{ "/guide/payments/receive/#inputting-additional-payment-details" | relative_url }}) to a payment when receiving or sending bitcoin. This practice is often called address labeling. Not only does this help to remember what payments were for, it also enables preventative measures for preserving privacy. Labeling receiving addresses([UTXOs]({{ "/guide/glossary/#unspent-transaction-output-utxo" | relative_url }})) with the sender's name can inform decisions for which UTXOs are selected as inputs in future transactions, this is often referred to as [coin control]({{ "/guide/glossary/#coin-control" | relative_url }}).
 
 Some applications make it possible to filter UTXOs by label to make such selections easier.
 
@@ -124,9 +124,9 @@ Some applications make it possible to filter UTXOs by label to make such selecti
    caption = "CoinJoin transactions attempt to make payments more private by mixing inputs from many senders and outputs to many receivers."
 %}
 
-[CoinJoins]({{ "/guide/glossary/#coinjoin" | relative_url }}) is an advanced technique where multiple participants collaborate on a transaction to break the "common input ownership" heuristic[^3], which assumes that all inputs in a transaction likely belong to the same owner. In a CoinJoin transaction all the outputs tend to be of the same amount. This makes it harder to define which input paid which output, somewhat breaking the absolute traceability of bitcoin transactions. As with any other anonymity network, a large and diverse group of participants will be more effective in disassociating the connections. CoinJoin transactions are not yet widely supported by Bitcoin applications.
+[CoinJoins]({{ "/guide/glossary/#coinjoin" | relative_url }}) are an advanced technique where multiple participants collaborate on a transaction to break the "common input ownership" heuristic[^3], which assumes that all inputs in a transaction likely belong to the same owner. In a CoinJoin transaction, all the outputs tend to be of the same amount. This makes it harder to define which input paid which output, somewhat breaking the absolute traceability of bitcoin transactions. As with any other anonymity network, a large and diverse group of participants will be more effective in disassociating the connections. This group is often refered to as the "anon-set", and often indicates the strength of the CoinJoin's anonymity rating. CoinJoin transactions are not yet widely supported by Bitcoin applications.
 
-Users still have to be mindful of how the UTXOs they received from the CoinJoin are spent. For instance, spending them together in a single transaction would unravel the anonymity gains from participating in the CoinJoin.
+Despite the benefits of CoinJoins, users still have to be mindful of how they spend the UTXOs received from these transactions. For instance, spending them together in a single transaction would unravel the anonymity gains from participating in the CoinJoin.
 
 </div>
 
@@ -136,7 +136,7 @@ Thinking about privacy is critical during the design process. Your users will no
 
 It is especially important to help them understand any actions that might impact their privacy. Most of the risks occur at the point of creating a transaction or requesting a payment, and we should try to design solutions that reduce the risk of unknowingly degrading privacy.
 
-While there is no perfect solution that will guarantee 100% privacy, try to minimize how much information gets shared to the most essential. Consider ways to inform and prevent user actions that negatively impact their privacy as they use your product.
+While there is no perfect solution that will guarantee 100% privacy, trying to minimize how much sensitive information gets shared is most essential. Consider ways to inform and prevent user actions that negatively impact their privacy as they use your product.
 
 <!--
 There is no perfect solution to guarantee 100% privacy that lasts forever because things can be revealed over time. Since transactions are forever public, even if all precautions are taken at the time of payment to ensure the highest degree of anonymity, future behaviors of the wallet owner or transacting parties can still degrade previously attained privacy. A high amount of diligence is necessary whenever users are transacting with Bitcoin. The product should be able to guide, inform, and prevent them against privacy degrading actions.
